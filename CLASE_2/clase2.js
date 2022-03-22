@@ -49,9 +49,9 @@ const personajes = [
     },
     {
         id: 9,
-        nombre: 'Thanos',
+        nombre: 'Duende Verde',
         tipo : 'villano',
-        edad: 110
+        edad: 50
     },
     {
         id: 10,
@@ -81,5 +81,5 @@ const promedio = (personajes.reduce((valPrevio, valActual) => valPrevio + valAct
 console.log(promedio);
 
 //hacer array filtrado con los objetos por tipo
-const persTipo = personajes.filter(p => p.tipo == "heroe");
+const persTipo = personajes.filter(p => p.tipo == "superheroe");
 console.log(persTipo);
