@@ -39,8 +39,12 @@ const mostrarPorConsola = () => {
     console.log(personajeBuscado);
 }
 
-console.log(personajeBuscado);
 
 const perFil = personajes.map(p => p.nombre);
 console.log(perFil);
 
+const promedio = (personajes.reduce((valPrevio, valActual) => valPrevio + valActual, 0))/personajes.length;
+console.log(promedio);
+
+const persTipo = personajes.filter(p => p.tipo);
+console.log(persTipo);
