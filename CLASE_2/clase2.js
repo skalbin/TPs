@@ -28,23 +28,58 @@ const personajes = [
         nombre: 'Thor',
         tipo : 'superheroe',
         edad: 105
+    },
+    {
+        id: 6,
+        nombre: 'Flash',
+        tipo : 'superheroe',
+        edad: 30
+    },
+    {
+        id: 7,
+        nombre: 'Loki',
+        tipo : 'villano',
+        edad: 104
+    },
+    {
+        id: 8,
+        nombre: 'Thanos',
+        tipo : 'villano',
+        edad: 110
+    },
+    {
+        id: 9,
+        nombre: 'Thanos',
+        tipo : 'villano',
+        edad: 110
+    },
+    {
+        id: 10,
+        nombre: 'Ronan',
+        tipo : 'villano',
+        edad: 120
     }
+
 ];
 
+//mostrar array por consola
 console.log(personajes);
 
+//buscar objeto por id y mostrarlo
 const mostrarPorConsola = () => {
     let persId = document.getElementById("personajeId").value;
     let personajeBuscado = personajes.filter(p => p.id.toString() === persId);
     console.log(personajeBuscado);
 }
 
-
+//mostrar array filtrado por los nombres
 const perFil = personajes.map(p => p.nombre);
 console.log(perFil);
 
+//hacer promedio de edad
 const promedio = (personajes.reduce((valPrevio, valActual) => valPrevio + valActual, 0))/personajes.length;
 console.log(promedio);
 
-const persTipo = personajes.filter(p => p.tipo);
+//hacer array filtrado con los objetos por tipo
+const persTipo = personajes.filter(p => p.tipo == "heroe");
 console.log(persTipo);
