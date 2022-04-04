@@ -67,9 +67,11 @@ console.log(personajes);
 
 //buscar objeto por id y mostrarlo
 const mostrarPorConsola = () => {
-    let persId = document.getElementById("personajeId").value;
-    let personajeBuscado = personajes.filter(p => p.id.toString() === persId);
+    const persId = document.getElementById("personajeId").value;
+    const personajeBuscado = personajes.filter(p => p.id.toString() === persId);
     console.log(personajeBuscado);
+   //CLASE 3- const row = `<p> ${personaje.nombre}</p>`;
+
 }
 
 //mostrar array filtrado por los nombres
@@ -77,7 +79,7 @@ const perFil = personajes.map(p => p.nombre);
 console.log(perFil);
 
 //hacer promedio de edad
-const promedio = (personajes.reduce((valPrevio, valActual) => valPrevio + valActual, 0))/personajes.length;
+const promedio = (personajes.reduce((valPrevio, valActual) => valPrevio + valActual.edad, 0))/personajes.length;
 console.log(promedio);
 
 //hacer array filtrado con los objetos por tipo
