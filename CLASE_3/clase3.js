@@ -233,7 +233,7 @@ const buscarPorTipo = () => {
 
     const tipo = select.options[select.selectedIndex].text;
 
-    console.log(tipo);
+   // console.log(tipo);
 
     const persoTipo = personajes.filter(personaje => personaje.tipo === tipo);
     
