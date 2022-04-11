@@ -2,7 +2,7 @@ const start = async () => {
     try{
     const response = await fetch('https://rickandmortyapi.com/api/character');
     const {info, results} = await response.json();
-    console.log(results);
+    //console.log(results);
     results.forEach((character) => {
         const card = mostrarTarjetas (character);
         document.getElementById('cards').insertAdjacentHTML('beforeend', card);
@@ -16,9 +16,9 @@ const start = async () => {
 
     const mostrarTarjetas = (character) =>{
         const card = `
-        <div class = "col-4 mt-4">
-        <div class="card" style="width: 18rem;">
-        <img src="${character.image}" class="card-img-top" alt="...">
+        <div class = "col">
+        <div class="card h-100" >
+        <img height="200px" src="${character.image}" class="card-img-top" alt="...">
         <div class="card-body">
           <h5 class="card-title">${character.name}</h5>
           <p class="card-text">Origen : ${character.origin.name}.</p>
@@ -49,43 +49,44 @@ const start = async () => {
     }
 }
 
-// const buscarPorEstado = () => {
-//     try{
-//         const select = document.getElementById('status');
-//         const status = select.options[select.selectedIndex].text;
-//         const response = await fetch(`https://rickandmortyapi.com/api/character`);
-//         const {info, results} = await response.json();
-//         document.getElementById("cards").innerHTML = '';
-//         results.forEach((character) => {
-//             const estado = character.filter(personaje => personaje.status === status);
-//             const card = mostrarTarjetas (character);
-//             if(status != "Seleccionar Estado"){
-//                 document.getElementById("cards").innerHTML = '';
-//                 estado.forEach(card);
-//             }else{
-//                 start();
-//             }
-            
-//         })
-//     } catch(err){
-//         console.error(err);
-//     }
-// }
-    
+const buscarPorEstado = async () => {
+    try{
+        const select = document.getElementById('status');
+        const status = select.options[select.selectedIndex].text;
+        const response = await fetch(`https://rickandmortyapi.com/api/character?status=${status}`);
+        const {info, results} = await response.json();
+        document.getElementById("cards").innerHTML = '';
+        results.forEach((character) => {
+             const card = mostrarTarjetas(character);
+             document.getElementById('cards').insertAdjacentHTML('beforeend', card);           
+        })
+    } catch(err){
+        console.error(err);
+    }
+}
 
    
 
 
-//     const persoTipo = personajes.filter(personaje => personaje.tipo === tipo);
+const buscarPorEspecie = async () => {
+        
+    try{
+        const species = document.getElementById('species').value;
+        console.log(species);
+        const response = await fetch(`https://rickandmortyapi.com/api/character?species=${species}`);
+        const {info, results} = await response.json();
     
-//     if(tipo != "Seleccionar Tipo"){
-//         document.getElementById("tarjetas").innerHTML = '';
-//         persoTipo.forEach(Tarjetas);
-//     }else{
-//         primera();
-//     }
-
-// }
+        document.getElementById("cards").innerHTML = '';
+        results.forEach((character) => {
+        const card = mostrarTarjetas (character);
+        document.getElementById('cards').insertAdjacentHTML('beforeend', card);
+    })
+   
+    
+} catch(err){
+    console.error(err);
+}
+}
 
 
     window.onload = start();
